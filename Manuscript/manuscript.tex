@@ -174,8 +174,25 @@
 		\begin{enumerate}
 			\item The mapping \(\lambda\) is injective: to prove this, let
 			$t_1, t_2 \in \Tri$ such that \(\lambda(t_1) = \lambda(t_2)\) but
-			\(t_1 \neq t_2\).
+			\(t_1 \neq t_2\). It follows that
+			\[(r_1 - b_1) + (g_1 - b_1)i = (r_2 - b_2) + (g_2 - b_2)i,\]
+			which is only true if the equations \(r_1 - b_1 = r_2 - b_2
+			\implies r_2 = r_1 + (b_2 - b_1)\) and \(g_1 - b_1 = g_2 - b_2
+			\implies g_2 = g_1 + (b_2 - b_1)\) are simultaneously true.
+			However, it is also trivially true that \(b_2 = b_1 + (b_2 -
+			b_1)\), which means that \(t_2 = t_1 + (b_2 - b_1)\), i.e. \(t_1\)
+			and \(t_2\) represent the same equivalence class, which is a
+			contradiction. Thus, if \(\lambda(t_1) = \lambda(t_2)\), then \(t_1
+			= t_2\), as desired.
+			\item The mapping \(\lambda\) is surjective: to prove this, let $t
+			\in \Tri$. We will show that there exists some \(z \in
+			\mathbb{C}\) such that \(\lambda(t) = z\). We have that $\lambda(t)
+			= (r - b) + (g - b)i$. Since $(r - b), (g - b) \in \mathbb{R}$,
+			$\lambda(t) = z \in \mathbb{C}$, as desired.
 		\end{enumerate}
+
+		So, \(\lambda\) is a bijection. It remains to show that $\lambda$ is a
+		field homomorphism.
 	\end{proof}
 
 	\section{Isometric geometry of Triphos}
