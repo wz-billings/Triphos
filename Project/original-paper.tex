@@ -1,0 +1,794 @@
+\documentclass[11pt]{article}
+
+% Packages to use
+\usepackage{amsthm,amssymb,amsmath}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage{multicol}
+\usepackage[margin=1in]{geometry}
+
+% Title data
+\title{\textit{Triphos}: Algebra and Geometry of an Isometric World}
+\author{Zane Billings}
+\date{}
+
+% Commands
+\newcommand{\Tri}{\mathbb{R}_T}
+\newcommand{\degr}{^{\circ}}
+
+% Theorem styles
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{result}{Result}
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{conjecture}{Conjecture}
+
+\begin{document}
+
+	\maketitle
+	\begin{abstract}
+		Triphos is a number system motivated by the idea of using three axes
+		(equally spaced \(120^{\circ}\) apart) on the two-dimensional
+		coordinate plane rather than two. The Triphosian coordinate system has
+		some similarities to the RGB additive coloring model of light. More
+		importantly, Triphos has interesting algebraic and geometric
+		properties. In this paper, we detail the construction of the Triphosian
+		numbers, which has done previously, and we additionally provide a
+		handful of new results about Triphos. Namely, regarding the algebraic
+		structure of Triphos, we show that the field of Triphosian numbers has
+		characteristic 0. We also provide novel results in Triphosian geometry:
+		we construct the unit circle in Triphos, calculate the Triphosian
+		equivalent of \(\pi\), and finally, we derive a form of the Pythagorean
+		theorem in Triphos.
+	\end{abstract}
+
+	\section{Introduction}
+
+	In Euclidean geometry, points in two-dimensional space are plotted on a
+	plane with two axes (usually called \(x\) and \(y\)), placed
+	perpendicularly (specifically, \(90\degr\) apart)--one axis specifying each
+	dimension of the point. A consequence of this definition of the plane is
+	that the plane can be subdivided into tiny squares. However, this
+	definition of the plane is not the only definition allowing the
+	visualization of two-dimensional points.
+
+	Consider instead a world where the plane is defined by three axes, spaced
+	\(120\degr\) apart. The world of Triphos is defined by these axes, usually
+	called \(r, \ g,\) and \(b\). In this world, two-dimensional points are
+	specified by three coordinates, one for each axis. One interesting
+	consequence in this world is that we do not need negative numbers--one can
+	reach any point on the plane from any other point by only moving in
+	positive directions parallel to the three axes. Examining
+	Figure~\ref{fig:grid}, one of the most interesting and motivating
+	consequences of this definition can be observed: if we place ourselves at
+	the origin, denoted \((0,0,0)\), and move one unit along the red axis, one
+	unit parallel to the green axis, and finally one unit parallel to the blue
+	axis, we have ended up back at the origin! This observation, that \((1,1,1)
+	= (0,0,0)\), and consequently, that \((c,c,c) = (0,0,0)\) for any real
+	number \(c\), is the major motivation behind the study of Triphos.
+
+	There are currently two major examinations of the properties of Triphos.
+	One paper focuses primarily on explicit derivations of the algebra of
+	Triphos (\cite{egging}), while the other focuses on the motivation behind
+	Triphos and many of its interesting properties (\cite{grossnickle}). The
+	inspiration behind Triphos is the RGB model for additive mixing of
+	light~\cite{grossnickle}. If equal quantities of red, blue, and green light
+	are mixed, the result is white light, and this is exactly how addition in
+	Triphos works. While the analogy to light begins to break down when we
+	consider multiplication of Triphosian numbers, the world of Triphos still
+	provides an interesting system to study.
+
+	Here, we will cover the formal definition of the Triphosian numbers,
+	briefly show that Triphos is both a field and a metric space (all of these
+	results were previously proven in the former literature
+	(\cite{egging,grossnickle}), but they are worth repeating), before deriving
+	several new results. We will show that the field of Triphosian real numbers
+	has characteristic zero, as well as show some interesting results in
+	Triphosian geometry: the Triphosian unit circle is a hexagon, the
+	Triphosian equivalent of \(\pi\) is equal to three, and finally, we derive
+	a version of the Pythagorean theorem which applies to Triphosian triangles.
+
+	\begin{figure}[tbp]
+		\centering
+		\includegraphics[width=3in]{triphos_grid.png}
+		\caption{This figure, from~\cite{egging}, is an excellent visualization
+		of the three Triphosian axes.}
+		\label{fig:grid}
+	\end{figure}
+
+	\section{Algebra of Triphos}
+
+	We first concern ourselves with the formal algebraic definition of the
+	Triphosian numbers. While the existing literature deals with Triphosian
+	triples directly for the construction of Triphos, we define Triphos as a
+	set of equivalence classes.
+
+	\subsection{Definition of Triphos}
+
+	Consider the set of all real-valued triples. We define the following
+	equivalence relation on these triples, representing the observation that
+	\((c,c,c)\) represents the origin for any \(c \in \mathbb{R}\).
+
+	\begin{definition}{Triple relation~\cite{egging}.}
+		Let \((r,g,b)\) be a triple, where \(r,g,b \in \mathbb{R}\). Also,
+		suppose \(c \in \mathbb{R}\). We define the relation
+		\((r_1,g_1,b_1)\sim(r_2,g_2,b_2)\) if \((r_2,g_2,b_2) = (r_1 + c, r_2 +
+		c, r_3 + c)\).
+	\end{definition}
+
+	This relation is actually an equivalence relation on the set of real-valued
+	triples, which lends itself well to the definition of the set of Triphosian
+	numbers.
+
+	\begin{definition}{Equivalence relation~\cite{enderton}.}
+		An equivalence relation is any relation between two sets which
+		preserves the reflexive, symmetric, and transitive properties. That is,
+		given a relation, \(R\), we have that:
+		\begin{enumerate}
+			\item \(R\) is reflexive: \(xRx\) for all \(x\).
+			\item \(R\) is symmetric: if \(xRy\), then \(yRx\).
+			\item \(R\) is transitive: if \(xRy\) and \(yRz\), then \(xRz\).
+		\end{enumerate}
+	\end{definition}
+
+	\begin{theorem}
+		The relation defined by \((r,g,b)\sim(r+c,g+c,b+c), \ c \in
+		\mathbb{R}\) is an equivalence relation.~\cite{egging}
+	\end{theorem}
+
+	\begin{proof}
+		In order to show that \(\sim\) is an equivalence relation, we must show
+		that it is reflexive, symmetric, and transitive. A proof is provided in
+		\cite{egging}, but reproduced in greater detail here.
+		\begin{enumerate}
+			\item Reflexive: let \((r,g,b) \in \Tri.\) By the definition of
+			\(\sim\), \((r,g,b) \sim (r + 0, g + 0, b + 0) = (r,g,b)\), so
+			\((r,g,b) \sim (r,g,b)\) and the reflexive property holds.
+			\item Symmetric: let \((r_1,g_1,b_1), (r_2,g_2,b_2) \in \Tri\), and
+			suppose that \((r_1, g_1,b_1) \sim (r_2,g_2,b_2)\). By definition
+			of \(\sim\), there exists some \(c \in \mathbb{R}\) such that
+			\((r_2, g_2, b_2) = (r_1 + c, g_1 + c, b_1 +c)\). This implies that
+			\((r_2, g_2, b_2) \sim (r_1 + c + (-c), g_1 + c + (-c), b_1 +c +
+			(-c)) = (r_1,g_1,b_1).\) So \((r_2,g_2,b_2) \sim (r_1,g_1,b_1)\)
+			and thus the symmetric property holds.
+			\item Transitive: let \((r_1,g_1,b_1, (r_2,g_2,b_2), (r_3,g_3,b_3)
+			\in \Tri\) such that \((r_1,g_1,b_1) \sim (r_2,g_2,b_2)\) and
+			\((r_2,g_2,b_2) \sim (r_3,g_3,b_3)\). By definition of \(\sim\), we
+			have that there exist \(c,d \in \mathbb{R}\) such that
+			\((r_2,g_2,b_2) = (r_1 + c,g_1 + c,b_1 + c)\) and \((r_3,g_3,b_3) =
+			(r_2 + d,g_2 + d,b_2 + d)\). So we have that \((r_2,g_2,b_2) \sim
+			(r_2 + d,g_2 + d,b_2 + d) = (r_1 + c + d, g_1 + c + d, b_1 + c +
+			d)\). Thus, \((r_1, g_1, b_1) \sim (r_1 + c + d, g_1 + c + d, b_1 +
+			c + d) = (r_3, g_3, b_3).\) Thus, \((r_1,g_1,b_1) \sim
+			(r_3,g_3,b_3)\) and the transitive property holds.
+		\end{enumerate}
+		Since the reflexive, symmetric, and transitive properties hold,
+		\(\sim\) is an equivalence relation on the set of real-valued triples.
+	\end{proof}
+
+	This relation has an interesting geometric meaning in Triphos: any points
+	which are equivalent under \(\sim\) will be plotted in the same location on
+	the Triphosian plane. Given that \(\sim\) is an equivalence relation, we
+	can construct equivalence classes for each triple: these are an easy way to
+	``combine'' all of the triples which lie on the same point in Triphos into
+	one compact notation.
+
+	\begin{definition}{Equivalence classes of triples.}
+		We define the equivalence class of a triple, \((r,g,b)\) under
+		\(\sim\), denoted \([(r,g,b)]\), to be the set of all triples related
+		to \((r,g,b)\). Formally,
+		\[[(r,g,b)] = \{(x,y,z) \mid (x,y,z)\sim(r,g,b)\}.\]
+	\end{definition}
+
+	This is a specific case of the general definition of an equivalence
+	class~\cite{enderton}. Now that we have a notion of Triphosian equivalence
+	classes, we are finally ready to give a precise definition of the
+	Triphosian real numbers. In the two major papers to date about the Triphos
+	system (\cite{egging,grossnickle}), the set of Triphosian reals is
+	considered as the set of all real-valued triples. I feel that this
+	definition is confusing and as such have chosen to define the set of
+	Triphosian real numbers as the set of all equivalence classes.
+
+	\begin{definition}{Triphosian real numbers.} The set of Triphosian real
+	numbers (or simply, the Triphosian reals), denoted \(\Tri\), is defined as
+	the set of all equivalence classes defined by the relation \(\sim\) on the
+	set of real-valued triples. That is, in the typical formal notation,
+		\[\Tri = \mathbb{R}^3/\sim.\]
+	\end{definition}
+
+	Noting that if we have a set \(S\) and an equivalence relation \(R\), the
+	equivalence classes under \(R\) form a partition of \(S\)~\cite{enderton},
+	we can say that every real-valued triple is in one, and only one,
+	equivalence class.
+
+	Since each equivalence class contains an uncountable number of triples
+	(each equivalence class contains as many triples as there are real numbers
+	\(c\), from the definition of our classes), we are faced with a few
+	important questions about Triphosian numbers. Firstly, which triple should
+	we use to represent each equivalence class? And secondly, how can we
+	quickly tell if two triples are in the same equivalence class without
+	plotting them? Both of these questions can be answered by defining a
+	standard form for Triphosian numbers.
+
+	\begin{definition}{Standard form~\cite{egging}.} A Triphosian number
+	\([(r,g,b)]\) is said to be in standard form if all entries are
+	non-negative (\(r,g,b > 0\)), and at least one entry is zero (\(r = 0\), or
+	\(b = 0\), or \(g = 0\)).
+	\end{definition}
+
+	Importantly, each standard form Triphosian number uniquely represents a
+	point on the plane~\cite{grossnickle}. A consequence of this fact is that
+	if two Triphosian numbers are both in standard form, they can only be
+	equivalent if each of their components is equivalent.
+
+	\begin{definition}{Triphosian equality.~\cite{egging}}
+		Let \([(r_1,g_1,b_1)], [(r_2,g_2,b_2)]\) be two Triphosian numbers in
+		standard form. We say that \([(r_1,g_1,b_1)] = [(r_2,g_2,b_2)]\) if and
+		only if \(r_1 = r_2, g_1 = g_2\), and \(b_1 = b_2\).
+	\end{definition}
+
+	Now with a formal definition of the Triphosian reals in our toolbox, we can
+	examine the algebra of Triphos: as luck and the spirits of mathematics
+	would have it, we can define operations on the Triphosian reals that give
+	them an incredibly similar structure to the numbers we are used to working
+	with.
+
+	\subsection{Field Structure of Triphos}
+
+	In order to examine the algebraic structure of Triphos, we first define
+	notions of addition and multiplication of Triphosian numbers. Addition on
+	the Triphosian numbers is equivalent to addition over vectors in
+	\(\mathbb{R}^3\).
+
+	\begin{definition}{Triphosian addition~\cite{egging}.}
+		The sum of two Triphosian numbers, \([(r_1, g_1, b_1)], [(r_2, g_2,
+		b_2)]\) is defined as:
+		\[[(r_1, g_1, b_1)] + [(r_2, g_2, b_2)] = [(r_1 + r_2, g_1 + g_2, b_1 +
+		b_2)].\]
+	\end{definition}
+
+	\begin{theorem}
+		Triphosian addition is well-defined (i.e. unambiguous) over the
+		Triphosian reals.~\cite{egging}
+	\end{theorem}
+
+	While Triphosian multiplication has a messy formula for direct
+	computations, this definition of multiplication satisfies a similar
+	geometric property of complex multiplication: if two Triphosian numbers are
+	plotted as vectors on the Triphosian plane, their angles (from the red
+	axis) add, and their magnitudes multiply (using the Hexa-Metric distance,
+	which is defined later).
+
+	\begin{definition}{Triphosian multiplication.~\cite{egging}}
+		The product of two Triphosian numbers, \([(r_1, g_1, b_1)] \cdot [(r_2,
+		b_2, g_2)]\) is defined as:
+		\[[(r_1, g_1, b_1)] \cdot [(r_2, b_2, g_2)] = [(r_1r_2 + g_1b_2 +
+		b_1g_2, r_1g_2 + g_1r_2 + b_1b_2, r_1b_2 + g_1g_2 + b_1r_2)].\]
+	\end{definition}
+
+	\begin{theorem}
+		Triphosian multiplication is well-defined over the Triphosian
+		reals.~\cite{egging}
+	\end{theorem}
+
+	The proofs that Triphosian addition and multiplication are well-defined can
+	be found in~\cite{egging}. Now, in order to discuss the properties of these
+	operations, we must first define several types of algebraic structures.
+
+	\begin{definition}{Group~\cite{lang}.}
+		A group, \(G = (S,*)\), is a set \(S\) equipped with a binary operation
+		\(*\) satisfying the following properties:
+		\begin{enumerate}
+			\item \(G\) is closed under \(*\): if \(x,y \in G\), then \(x*y \in
+			S\).
+			\item \(G\) is associative under \(*\): if \(x,y,z \in G\), then
+			\(x*(y*z) = (x*y)*z\).
+			\item \(G\) has an identity element, \(e\), under the operation:
+			\(x*e = x = e*x\) for all \(x \in G\).
+			\item For every \(x \in G\), there is an inverse element: if \(x
+			\in G\), then \(y \in G\) such that \(x*y = e = y*x\).
+		\end{enumerate}
+	\end{definition}
+
+	\begin{definition}{Abelian group~\cite{lang}.}
+		A group, \(G(S,+)\), is said to be Abelian if \(G\) is commutative
+		under \(+\); that is, if \(x,y \in G\), then \(x + y = y + x\).
+	\end{definition}
+
+	\begin{definition}{Ring~\cite{lang}.}
+		A ring, \(R = (S,+,\cdot)\), is a set \(S\) equipped with two binary
+		operations, typically called addition (+) and multiplication
+		(\(\cdot\)) satisfying the following properties:
+		\begin{enumerate}
+			\item \(R\) forms an Abelian group equipped with addition; that is,
+			\((S,+)\) is a group (note that in a ring, the additive identity is
+			often written as 0).
+			\item \(R\) is closed under multplication: if \(x,y \in R\), then
+			\(x \cdot y \in R\).
+			\item \(R\) contains a multiplicative identity, 1: if \(x \in R\),
+			then \(1 \cdot x = x = x \cdot 1\).
+			\item \(R\) is associative under multplication: if \(x,y,z \in R\),
+			then \(x\cdot(y\cdot z) = (x\cdot y) \cdot z\).
+			\item \(R\) obeys the distributive property with respect to \(+\)
+			and \(\cdot\); that is, given \(x,y,z \in R\) we have that \(x
+			\cdot (y + z) = x\cdot y + x \cdot z\).
+		\end{enumerate}
+	\end{definition}
+
+	\begin{definition}{Field~\cite{lang}.}
+		A field, \(F = (S,+,\cdot)\), is a set \(S\) with two operations,
+		typically called addition (\(+\)) and multiplication (\(\cdot\)),
+		satisfying the following properties:
+		\begin{enumerate}
+			\item \(F\) is an Abelian group under \(+\).
+			\item \(F - \{0\}\) is an Abelian group under \(\cdot\) (i.e.
+			division by zero is not allowed; the additive identity is excluded
+			as it has no multiplicative inverse).
+			\item Addition distributes over multiplication in \(F\): if \(x,y,z
+			\in F\), then \(x\cdot(y + z) = x\cdot y + x\cdot z\).
+		\end{enumerate}
+		This definition is equivalent to the 11 field axioms listed in many
+		sources. Finally, note that every field is also a ring by definition.
+	\end{definition}
+
+	These definitions serve to illustrate the properties of the Triphosian
+	reals, as well as provide the Triphosian reals with a common structure: by
+	showing that the Triphosian reals have a well-studied structure, we
+	immediately become aware of several facts that are true about the
+	Triphosian reals.
+
+	\begin{theorem}
+		The set of Triphosian reals, equipped with Triphosian addition and
+		multiplication, \((\Tri, +, \cdot)\), forms a field.~\cite{egging}
+	\end{theorem}
+	\begin{proof}
+		In order to show that the Triphosian reals are a field, we will first
+		show that the Triphosian reals, equipped with Triphosian addition, form
+		an Abelian group. The proof of all of these statements can be found
+		in~\cite{egging}.
+		\begin{itemize}
+			\item The Triphosian reals are closed under addition.
+			\item The associative and commutative properties hold for
+			Triphosian reals under addition.
+			\item The additive identity is \([(0,0,0)]\).
+			\item Let \([(r,g,b)] \in \Tri\). The additive inverse of
+			\([(r,g,b)]\) is \([(-r,-g,-b)] \in \Tri\). When written in
+			standard form this is \([(g+b, r+b, r+g)]\)~\cite{grossnickle}.
+		\end{itemize}
+
+		Furthermore, the following properties hold for Triphosian
+		multiplication~\cite{egging}.
+		\begin{itemize}
+			\item The Triphosian reals are closed under multiplication.
+			\item The associative and commutative properties hold for
+			Triphosian reals under multiplication.
+			\item The multiplicative identity is \([(1,0,0)]\).
+		\end{itemize}
+
+		Additionally the multiplicative inverse is calculated as
+		\([(r/n,g/n,b/n)]\) where \(n = r^2 + b^2 + g^2 - rb - rg -gb\); this
+		is not defined for \([(0,0,0)]\), but it is defined everywhere
+		else~\cite{egging}. So, the above properties are sufficient to show
+		that the set \(\Tri - \{[(0,0,0)]\}\) is an Abelian group under
+		Triphosian multiplication.
+
+		Finally, the distributive property is verified in~\cite{egging} as
+		well. So, the set of Triphosian reals equipped with Triphosian addition
+		and multiplication forms a field.
+	\end{proof}
+
+	With this knowledge in mind, our next goal is to define a notion of
+	distance in Triphos. A way to measure distance is crucial for our results
+	in the geometry of Triphos, so our next goal is to show that distance can
+	be measured with all of the familiar properties of Euclidean distance in
+	Triphos.
+
+	\subsection{The Hexa-Metric}
+
+	The distance in Triphos is known as the Hexa-Metric function. The
+	Hexa-Metric function is similar to the Taxicab metric function in Euclidean
+	space, as it only allows movement parallel to the axes. Interestingly,
+	there is no unique shortest path between points in Triphos: between two
+	points there can be many paths, which stay parallel to the axes, yet all
+	have the same minimum distance. Visual demonstrations of this metric can be
+	found in~\cite{egging}, just like many other results covered here.
+
+	\begin{definition}{Hexa-Metric function~\cite{egging}.} The Hexa-Metric
+	function is defined as \(H: \Tri \times \Tri \to \mathbb{R}\) such that
+		\begin{align*}
+			H([(r_1,g_1,b_1)], [(r_2,g_2,b_2)]) = \min{}\{ &|(r_1 - b_1) - (r_2
+			- b_2)| + |(g_1 - b_1) - (g_2 - b_2)|, \\
+			&|(r_1 - g_1) - (r_2 - g_2)| + |(b_1 - g_1) - (b_2 - g_2)|, \\
+			&|(g_1 - r_1) - (g_2 - r_2)| + |(b_1 - r_1) - (b_2 - r_2)| \}.
+		\end{align*}
+	\end{definition}
+
+	In addition to forming a field, if we equip the Triphosian reals with the
+	Hexa-Metric function, we obtain another well-studied structure known as a
+	metric space.
+
+	\begin{definition}{Metric space~\cite{kaplansky}.}
+		A metric space, \(M = (S,d)\), is a set \(S\) with a function \(d: S
+		\times S \to \mathbb{R}\) defined for all \(a,b \in S\) such that:
+		\begin{enumerate}
+			\item \(d(a,a) = 0\) for all \(a\).
+			\item \(d(a,b) > 0\) for all \(a \neq b\).
+			\item \(d(a,b) = d(b,a)\).
+			\item \(d(a,c) \leq d(a,b) + d(b,c)\) (the triangle inequality
+			holds).
+		\end{enumerate}
+		Additionally, the function \(d\) of a metric space is called a metric.
+	\end{definition}
+
+	Intuitively, a metric space is a coordinate space where distance behaves
+	the way we are used to--Euclidean space (the set of real-valued doubles
+	equipped with the Euclidean distance function) is a metric space as well,
+	and the notion of a generalized metric space generalizes many of the
+	properties we know and love.
+
+	\begin{theorem}
+		The Triphosian reals equipped with the Hexa-Metric function, \((\Tri,
+		H)\), forms a metric space.~\cite{egging}
+	\end{theorem}
+
+	We again cite the proof in~\cite{egging} for this result. Now, knowing that
+	Triphos is a metric space, we have a notion of distance between Triphosian
+	numbers--this result is important to the geometry of Triphos, and we will
+	use the Hexa-Metric function to prove a handful of results in geometry.
+
+	\section{Results}
+
+	\subsection{Characteristic of the Field of Triphosian Reals}
+
+	The first result we will derive is the characteristic of the field of
+	Triphosian reals. In order to define the characteristic of a ring, we need
+	the following definitions from algebra.
+
+	\begin{definition}{Subgroup~\cite{lang}.}
+		A subgroup, \(H\), of a group \(G = (S,*)\), is a subset of \(G\) which
+		is a group under \(*\) itself.
+	\end{definition}
+
+	\begin{definition}{Subring~\cite{lang}.}
+		A subring \(A\) of a ring \(R = (S, +, \cdot)\) is a subset of \(R\)
+		which is a ring under \(+\) and \(\cdot\) itself. By definition, any
+		subring \(A\) of \(R\) must be a subgroup of \(R\) under \(+\) as well.
+	\end{definition}
+
+	\begin{definition}{Ring homomorphism~\cite{lang}.}
+		Let \(A\) and \(B\) be rings, and define a mapping \(f: A \to B\).
+		Furthermore, let 0 represent the additive identity and let 1 represent
+		the multiplicative identity. We say \(f\) is a ring homomorphism if
+		\(f\) satisfies the following properties for all \(a_1, a_2 \in A\).
+		\begin{multicols}{2}
+			\begin{itemize}
+				\item \(f(a_1 + a_2) = f(a_1) + f(a_2)\).
+				\item \(f(0) = 0\).
+				\item \(f(a_1 \cdot a_2) = f(a_1)\cdot f(a_2)\).
+				\item \(f(1) = 1\).
+			\end{itemize}
+		\end{multicols}
+	\end{definition}
+
+	\begin{definition}{Isomorphism~\cite{lang}.}
+		Any homomorphism \(f\) is an isomorphism if and only if \(f\) is also a
+		bijection. Specifically, an isomorphism which is a group homomorphism
+		is called a group isomorphism, an isomorphism which is a ring
+		homomorphism is called a ring isomorphism, etc.
+	\end{definition}
+
+	\begin{definition}{Characteristic of a ring~\cite{lang}.}
+		The characteristic of a ring, \(R = (S, +, \cdot)\), denoted
+		\(\mathrm{char}(R)\), is the minimum positive integer \(n > 0\) such
+		that there is a subring \(A\) of \(R\) which is isomorphic to
+		\(\mathbb{Z}/n\mathbb{Z}\). If \(R\) has a subring which is isomorphic
+		to \(\mathbb{Z}\), then \(R\) has characteristic zero.
+	\end{definition}
+
+	Now that we have the characteristic of a ring defined, and all of the
+	definitions we need for our proof, we can state and prove the result.
+
+	\begin{result}
+		The field of Triphosian reals, \(\Tri\), has characteristic zero.
+	\end{result}
+	\begin{proof}
+		Consider the Triphosian reals, \(\Tri\). In order to show that \(\Tri\)
+		has characteristic 0, we will construct a subring of \(\Tri\) and show
+		it is isomorphic to \(\mathbb{Z}\).
+
+		Let \(S\) be a subset of \(\Tri\) such that \(S = \{[(k,0,0)]\mid k \in
+		\mathbb{Z}\}\). First, we will show that \(S\) is an additive subgroup
+		of \(\Tri\).
+		\begin{enumerate}
+			\item Closure: Let \([(m,0,0)],[(n,0,0)] \in S\). Then, \([(m,0,0)]
+			+ [(n,0,0)] = [(m+n,0,0)]\). Since \(m+n \in \mathbb{Z}\), we have
+			that \([(m+n,0,0)] \in S\), so \(S\) is closed under addition.
+			\item Associativity: Associativity and commutativity are true for
+			all elements of \(\Tri\), so both hold in \(S\).
+			\item Identity: Since \(0 \in \mathbb{Z}\), \([(0,0,0)] \in S\),
+			thus \(S\) contains the additive identity of \(R\).
+			\item Inverse: Given \(x \in S\), we have \(y \in S\) such that \(x
+			+ y = [(0,0,0)]\). Let \(x = [(k,0,0)] \in S\). Then the additive
+			inverse of \(x\) is \(y = [(-k,0,0)] \in S\) (we see that \(x + y =
+			[(k + (-k),0,0)] = [(0,0,0)]\)), so \(S\) contains an additive
+			inverse of every element.
+		\end{enumerate}
+
+		This proves that \(S\) is a subgroup under addition, so it remains to
+		show that \(S\) is also a ring.
+		\begin{enumerate}
+			\item Identity: since \(1 \in \mathbb{Z}\), we have that
+			\([(1,0,0)] \in S\) and thus \(S\) contains the multiplicative
+			identity of \(R\).
+			\item Associativity and distributivity: the associative property
+			under \(\cdot\) and the distributive property are inherited from
+			\(R\).
+			\item Closure: let \([(m,0,0)], [(n,0,0)] \in S\). Then,
+			\([(m,0,0)]\cdot[(n,0,0)] = [(m\cdot n + 0 + 0, m\cdot 0 + 0\cdot n
+			+ 0, m \cdot 0 + 0 + 0 \cdot n)] = [(m\cdot n,0,0)]\). Since \(m
+			\cdot n \in \mathbb{Z}\), we have that \([(m\cdot n,0,0)] \in S\),
+			so \(S\) is closed under multiplication.
+		\end{enumerate}
+		So, \(S\) is a ring, and in particular, a subring of \(\Tri\).
+
+		Now we will define a mapping \(\lambda: \mathbb{Z} \to S\) and prove
+		that this mapping is an isomorphism. Let \(\lambda: \mathbb{Z} \to S\)
+		be defined by \(\lambda(n) = [(n,0,0)]\).
+
+		First we will show that \(\lambda\) is a bijection.
+		\begin{enumerate}
+			\item The mapping \(\lambda\) is injective: to prove this, let
+			\(m,n \in \mathbb{Z}\) such that \(f(m) = f(n)\) but \(m \neq n\).
+			Then, \(\lambda(m) = [(m,0,0)] = [(n,0,0)] = \lambda(n)\). But
+			since both of these Triphosian numbers are in standard form, for
+			this to be true we must have that \(m = n\), which is a
+			contradiction. Hence, if \(f(m) = f(n)\), then \(m=n\) and
+			\(\lambda\) is an injection.
+			\item The mapping \(\lambda\) is surjective: let \(y =[(x,0,0)] \in
+			S\). We will show that there exists some \(x \in \mathbb{Z}\) such
+			that \(f(x) = y\). Let \(x \in \mathbb{Z}\). Then, \(f(x) =
+			[(x,0,0)]\) and hence \(f(x) = y\). So, \(\lambda\) is surjective.
+		\end{enumerate}
+
+		So, \(\lambda\) is a bijection. Now we will show that \(\lambda\) is a
+		ring homomorphism.
+		\begin{enumerate}
+			\item The mapping \(\lambda\) correctly maps identities:
+			\(\lambda(0) = [(0,0,0)]\) and \(\lambda(1) = [(1,0,0)]\) by
+			definition.
+			\item The mapping \(\lambda\) preserves addition: let \(m,n \in
+			\mathbb{Z}\). We have that \(\lambda(n+m) = [(m+n,0,0)] = [(m,0,0)]
+			+ [(n,0,0)] = \lambda(m) + \lambda(n)\), so addition is preserved.
+			\item The mapping \(\lambda\) preserves multiplication: let \(m, n
+			\in \mathbb{Z}\). Then, \(\lambda(m \cdot n) = [(m\cdot n, 0,0)].\)
+			We have that \([(m,0,0)] \cdot [(n,0,0)] = [(m\cdot n + 0 + 0,
+			m\cdot 0 + 0\cdot n + 0, m \cdot 0 + 0 + 0 \cdot n)] = [(m\cdot
+			n,0,0)]\), so we see that \(\lambda(m\cdot n) = [(m,0,0)]\cdot
+			[(n,0,0)] = \lambda(m) \cdot \lambda(n)\). So, multiplication is
+			preserved.
+		\end{enumerate}
+
+		Thus, \(\lambda\) is a ring homomorphism. Since \(\lambda\) is both a
+		ring homomorphism and a bijection, \(\lambda\) is a ring isomorphism.
+		To recap, we have that \(S\) is a subring of \(\Tri\), and we have
+		established that \(\lambda\) is a ring isomorphism between \(S\) and
+		\(\mathbb{Z}\).
+
+		This establishes that \(\Tri\) has characteristic 0.
+	\end{proof}
+
+	\subsection{The Triphosian Unit Circle and Pi}
+
+	\begin{result}
+		The Triphosian pi, \(\pi_T\), defined as the ratio of the circumference
+		of a circle to its diameter in Triphos, using the Hexa-Metric distance,
+		is \(\pi_T = 3\).
+	\end{result}
+
+	In order to calculate the Triphosian equivalent of \(\pi\), which we will
+	denote \(\pi_T\), we must first construct a circle, specifically the unit
+	circle.
+
+	\begin{definition}{Unit circle.}
+		The unit circle is the set of all points which are distance 1 away from
+		the origin.
+	\end{definition}
+
+	So, in order to construct the Triphosian unit circle we define the set of
+	points
+
+	\[\{[(r,g,b)] \mid H([(r,g,b)], [(0,0,0)]) = 1\},\]
+
+	where \(H\) is the Hexa-Metric function. A visual plot of the Triphosian
+	unit circle can be seen in Figure \ref{fig:uc}.
+
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=3in]{unitcircle.png}
+		\caption{The Triphosian unit circle, generated in \texttt{MATLAB}.}
+		\label{fig:uc}
+	\end{figure}
+
+	The unit circle in Triphos forms a hexagon, whose vertices are the set
+	\[ \{[(1,0,0)], [(0,1,1)], [(0,1,0)], [(1,0,1)], [(0,0,1)], [(1,1,0)]\}. \]
+
+	Verifying that these points are in the set requires one calculation using
+	the Hexa-Metric function as described in the definition of the set above,
+	and so it is not included here. Now, given the set of vertex points of the
+	hexagon, we can compute the side lengths of the hexagon. We show the
+	calculation of the length of the side formed by the points \([(1,0,0)]\)
+	and \([(1,1,0)]\) below.
+	\begin{align*}
+		H([(1,0,0)], [(1,0,1)])
+		&= \min\{
+		\begin{aligned}[t]
+			&|(1 - 0) - (1 - 1)| + |(0 - 0) - (0 - 1)|, \\
+			&|(1 - 0) - (1 - 0)| + |(0 - 0) - (1 - 0)|, \\
+			&|(0 - 1) - (0 - 1)| + |(0 - 1) - (1 - 1)| \}
+		\end{aligned}\\
+		&= \min\{2,1,1\} = 1
+	\end{align*}
+
+	Note that the length of each side is the same (we will not show each of the
+	computations, as they are all equivalent to the computation above), so the
+	``circumference'', or more accurately, the perimeter, of our unit circle,
+	is \(6 \cdot 1 = 6\).
+
+	Now, by visual inspection of Figure \ref{fig:uc}, we see that the diameter
+	of this regular hexagon can be found by taking the distance between
+	\([(1,0,0)]\) and \([(0,1,1)]\). (Or, equivalently, we could take the
+	distance between \([(0,1,0)]\) and \([(1,0,1)]\) or between \([(0,0,1)]\)
+	and \([(1,1,0)]\), but all of these lengths are equal.)
+	\begin{align*}
+		H([(1,0,0)], [(0,1,1)]) &= \min\{
+		\begin{aligned}[t]
+			&|(1 - 0) - (0 - 1)| + |(0 - 0) - (1 - 1)|, \\
+			&|(1 - 0) - (0 - 1)| + |(0 - 0) - (1 - 1)|, \\
+			&|(0 - 1) - (1 - 0)| + |(0 - 1) - (1 - 0)| \}
+		\end{aligned} \\
+		&= \min{(2,2,4)} = 2.
+	\end{align*}
+
+	So the perimeter of the unit circle in Triphos is \(6\) and the diameter is
+	\(2\), and thus the Triphosian equivalent of \(\pi\) is \(\pi_T = 6/2 = 3\).
+
+
+	\subsection{A Triphosian Pythagorean Theorem}
+
+	\begin{result}
+		In Triphosian coordinates, if a triangle with a \(60^{\circ}\) angle
+		has leg lengths \(a\) and \(b\), then the length, \(c\) of the third
+		side (which is opposite from a \(60^{\circ}\) angle) is \[c = \min
+		(\left| a-b\right| +\left| a\right| ,\left| a\right| +\left| b\right|
+		,\left| a-b\right| +\left|
+		b\right| ).\]
+	\end{result}
+
+	Assume we have a triangle with a \(60^{\circ}\) angle. First, we will
+	impose Triphosian coordinates onto the triangle. Place the origin of the
+	coordinate system at the vertex of the \(60^{\circ}\) angle, as shown in
+	Figure \ref{fig:tri}.
+
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=3in]{tri2.png}
+		\caption{A triangle with a \(60^{\circ}\): the origin is imposed on the
+		vertex of the \(60^{\circ}\) angle. Note that once the origin is
+		imposed, the triangle can be rotated to a similar position as this
+		triangle without changing any of its properties.}
+		\label{fig:tri}
+	\end{figure}
+
+	Now, we can assign a length to each of the legs (the sides forming the
+	\(60^{\circ}\) angle). We assign one leg the arbitrary length \(a\) and the
+	other leg the arbitrary length \(b\), as shown in Figure \ref{fig:tri_c}.
+	Since we have imposed the origin of the coordinate system on our triangle
+	in a specific way, we now know the three points that define the triangle.
+	Note that one of the legs is aligned with the blue axis, and one of the
+	legs is aligned with the red axis.
+
+	Without loss of generality, we can assign the arbitrary length \(a\) to the
+	side aligned with the blue axis. Note (as can be seen in either Figure
+	\ref{fig:tri} or \ref{fig:tri_c}) that this side goes in the negative
+	direction along the blue axis, so we can say that this leg of the triangle
+	terminates at the point \([(0,0,-a)]\), which when converted to standard
+	form is \([(a,a,0)]\).
+
+	Similarly, we notice that the other leg is aligned in the positive
+	direction on the red axis. We can assign this leg the arbitrary length
+	\(b\), and then this leg terminates at the point \([(b,0,0)]\).
+
+	Then, we can calculate the length of the remaining side, \(c\), as
+	\[c = H([(a,a,0)], [(b,0,0)]),\]
+	using the Hexa-Metric function.
+
+	\begin{figure}[htbp]
+		\centering
+		\includegraphics[width=3in]{tri3.png}
+		\caption{Because of the way we have imposed coordinates, we can use the
+		arbitrary lengths of the legs to determine the coordinates which define
+		the third side of the triangle. Then, the length of the third side is
+		the length between these two points.}
+		\label{fig:tri_c}
+	\end{figure}
+
+	We then compute the length \(c\) as
+	\begin{align*}
+		H([(a,a,0)], [(b,0,0)]) = \min{}\{ &|(a - 0) - (b - 0)| + |(a - 0) - (0
+		- 0)|, \\
+		&|(a - a) - (b - 0)| + |(0 - a) - (0 - 0)|, \\
+		&|(a - a) - (0 - b)| + |(0 - a) - (0 - b)| \},
+	\end{align*}
+
+	which simplifies to
+
+	\[c = \min{ (\left| a-b\right| +\left| a\right| ,\left| a\right| +\left|
+	b\right| ,\left| a-b\right| +\left|
+		b\right| )}.\]
+
+	\subsection{Computer Codes}
+
+	In order to derive many of these results, a suite of \texttt{MATLAB}
+	functions was created to do math in Triphos. While this suite of functions
+	is currently relatively small and needs to be expanded, it is still novel
+	in that no function suite currently exists for Triphosian math. We hope to
+	expand this suite of functions in \texttt{MATLAB}, or potentially port the
+	functions into Python and expand the suite there.
+
+	Finally, when the Triphosian Pythagorean theorem was explored, a
+	Mathematica notebook was created and used to verify this geometric theorem,
+	and to create a more complex version of the theorem defined in terms of
+	Triphosian coordinates.
+
+	\section{Conclusion and Future Work}
+
+	In addition to the results we have defined, we have a set of conjectures
+	about the algebraic structure of Triphos.
+
+	\begin{conjecture}
+		The field of Triphosian reals, \(\Tri\), contains subfields isomorphic
+		to \(\mathbb{Q}\) and \(\mathbb{R}\).
+	\end{conjecture}
+
+	We believe that this conjecture can be proven by using a similar mapping to
+	the mapping \(\lambda\) we defined previously.
+
+	\begin{conjecture}
+		The field of Triphosian reals contains a subgroup isomorphic to
+		\(\mathbb{Z}^3/\sim\) (potentially a subring), and a subgroup
+		isomorphic to \(\mathbb{Q}^3/\sim\) (potentially a subfield).
+	\end{conjecture}
+
+	\begin{conjecture}
+		There is an isomorphism between \(\Tri\) and \(\mathbb{R}^2.\)
+	\end{conjecture}
+
+	In addition to showing these facts about the algebraic structure of
+	Triphos, we are additionally interested in defining a further notion of
+	trigonometry in Triphos. Our first goal in this regard would be to define a
+	notion of trigonometric functions on Triphosian numbers.
+
+	Finally, we have not presented some of the additional interesting results
+	seen in~\cite{grossnickle}--notably, notions of Triphosian integers and
+	primes, and a different place value system which may be more appropriate
+	for describing Triphosian numbers. We are also interested in exploring
+	properties and distribution of Triphosian primes, as well as other
+	sequences of Triphosian integers.
+
+	In conclusion, we have constructed the Triphosian real numbers, and defined
+	their algebraic structure and notion of distance. Furthermore, as unique
+	results, we have proven that the field of Triphosian integers has
+	characteristic zero, and regarding Triphosian geometry, we have constructed
+	the Triphosian unit circle and shown that \(\pi_T = 3\). We have also found
+	an analog of the Pythagorean theorem in Triphosian geometry, and defined
+	several more interesting problems in Triphos.
+
+	\bibliographystyle{unsrt}
+	\bibliography{ref}
+
+\end{document}
