@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\usepackage{amsmath,amsthm}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+
+\usepackage{multicol}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+
+% Commands
+\newcommand{\Tri}{\mathbb{R}_T}
+\newcommand{\degr}{^{\circ}}
+
+\allowdisplaybreaks
+
+\title{Algebra and geometry of Triphos}
+
+\author{W. Zane Billings \  \& Andrew Penland}
+\date{\today}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{abstract}
+		Triphos is a number system motivated by the idea of using three axes
+		(equally spaced \(120^{\circ}\) apart) on the two-dimensional
+		coordinate plane rather than two. The Triphosian coordinate system has
+		some similarities to the RGB additive coloring model of light. More
+		importantly, Triphos has interesting algebraic and geometric
+		properties. In this paper, we detail the construction of the Triphosian
+		numbers, which has done previously, and we additionally provide a
+		handful of new results about Triphos. Namely, regarding the algebraic
+		structure of Triphos, we show that the field of Triphosian numbers has
+		characteristic 0. We also provide novel results in Triphosian geometry:
+		we construct the unit circle in Triphos, calculate the Triphosian
+		equivalent of \(\pi\), and finally, we derive a form of the Pythagorean
+		theorem in Triphos.
+	\end{abstract}
+
+	\section{Background}
+
+	In Euclidean geometry, points in two-dimensional space are plotted on a
+	plane with two axes (usually called \(x\) and \(y\)), placed
+	perpendicularly (specifically, \(90\degr\) apart)--one axis specifying each
+	dimension of the point. A consequence of this definition of the plane is
+	that the plane can be subdivided into tiny squares. However, this
+	definition of the plane is not the only definition allowing the
+	visualization of two-dimensional points. Consider instead a world where the
+	plane is defined by three axes, spaced \(120\degr\) apart. The world of
+	Triphos is defined by these axes, usually called \(r, \ g,\) and \(b\). In
+	this world, two-dimensional points are specified by three coordinates, one
+	for each axis. One interesting consequence in this world is that we do not
+	need negative numbers--one can reach any point on the plane from any other
+	point by only moving in positive directions parallel to the three axes.
+
+	There are currently two major examinations of the properties of Triphos.
+	One paper focuses primarily on explicit derivations of the algebra of
+	Triphos (\cite{egging}), while the other focuses on the motivation behind
+	Triphos and many of its interesting properties (\cite{grossnickle}). The
+	inspiration behind Triphos is the RGB model for additive mixing of
+	light~\cite{grossnickle}. If equal quantities of red, blue, and green light
+	are mixed, the result is white light, and this is exactly how addition in
+	Triphos works. While the analogy to light begins to break down when we
+	consider multiplication of Triphosian numbers, the world of Triphos still
+	provides an interesting system to study.
+
+	We now offer a brief recap of what these two papers have already found,
+	along with the definitions which will be necessary for the remainder of the
+	article.
+
+	* definitions and equivalence class
+	* addition and multiplication
+
+
+	\section{Isomorphism to \(\mathbb{R}^2\)}
+
+	* brief remark on field structure of triphos
+	* show triphos has characteristic 0 and explain what this means
+	* show isomorphism between triphos and R2. explain that this verifies our
+	intuition--triphos is just another way to write down coordinates in the
+	plane.
+
+	\section{Isometric geometry of Triphos}
+
+	* brief explanation of hexa-metric
+
+	\section{Computer programs}
+
+	\bibliographystyle{unsrt}
+	\bibliography{refs.bib}
+
+\end{document}
