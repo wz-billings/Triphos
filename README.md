@@ -10,7 +10,7 @@
 
 ---
 
-In fall 2019, as part of my math capstone, I read the paper (PAPER NAME HERE) and attempted to answer some of the final conjectures put forward by the authors. In summer 2021, I got in touch with Andrew and decided that this project was potentially worth polishing. So now, in the present time (summer 2022), I am finally doing a small amount of work on this project again.
+In fall 2019, as part of my math capstone, I read the paper by [Grossnickle et al.](https://doi.org/10.1080/0025570X.2019.1609293) and attempted to answer some of the final conjectures put forward by the authors. In summer 2021, I got in touch with Andrew and decided that this project was potentially worth polishing. So now, in the present time (summer 2022), I am finally doing a small amount of work on this project again.
 
 ---
 **Main references:**
