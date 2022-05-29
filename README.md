@@ -1,6 +1,7 @@
 # Algebra and Geometry of Triphos
 
 [W. Zane Billings](https://wzbillings.com) -- University of Georgia
+
 [Andrew Penland]() -- Western Carolina University
 
 ---
