@@ -73,19 +73,110 @@
 
 	We now offer a brief recap of what these two papers have already found,
 	along with the definitions which will be necessary for the remainder of the
-	article.
+	article. We take the following definitions of Triphosian numbers with
+	addition, multiplication, and the hexa-metric distance from
+	\cite{grossnickle}.
 
-	* definitions and equivalence class
-	* addition and multiplication
+	\begin{definition}[Triple relation]
+		Let \(t = (r, g, b)\) be a triple with $r, g, b \in \mathbb{R}$ and
+		also let \(c \in \mathbb{R}\). We define the ``triple relation'' as
+		\((r_1, g_1, b_1) \sim (r_2, g_2, b_2)\) if \((r_2, g_2, b_2) = (r_1 +
+		c, g_1 + c, b_1 + c\).
+	\end{definition}
+
+	This is an equivalence relation \cite{egging}.
+
+	\begin{definition}[Triphosian numbers]
+		The set of Triphosian real numbers, \(\mathbb{R}_T\), is the set of all
+		equivalence classes of real-valued triples \(t = [(r, g, b)] \in
+		\mathbb{R}^3\) under the triple relation. That is,
+		\[\mathbb{R}_T = \mathbb{R}^3 / \sim.\]
+
+		Addition of two Triphosian real numbers is defined as
+		\[[(r_1, g_1, b_1)] + [(r_2, g_2, b_2)] = [(r_1 + r_2, g_1 + g_2, b_1 +
+		b_2)].\]
+
+		Multiplication of two Triphosian real numbers is defined as
+		\[[(r_1, g_1, b_1)] \times [(r_2, g_2, b_2)] = [(r_1r_2 + g_1b_2 +
+		b_1g_2, r_1g_2 + g_1r_2 + b_1b_2, r_1b_2 + g_1g_2 + b_1r_2)].\]
+
+		The distance between two Triphosian real numbers is defined by the
+		hexa-metric distance,
+		\begin{align*}
+			H([(r_1, g_1, b_1)], [(r_2, g_2, b_2)]) &=  \\
+			\min\{ & |(r_1 - b_1) - (r_2 - b_2)| + |(g_1 - b_1) - (g_2 -
+			b_2)|, \\
+			& |(r_1 - g_1) - (r_2 - g_2)| + |(b_1 - g_1) - (b_2 - g_2)|, \\
+			& |(g_1 - r_1) - (g_2 - r_2)| + |(b_1 - r_1) - (b_2 - r_2)| \}.
+		\end{align*}
+	\end{definition}
+
+	Addition and multiplication with these definitions are well-defined,
+	and the set of Triphosian numbers equipped with these two operations
+	forms a field , and this field equipped with the hexa-metric distance is a
+	metric space \cite{egging}.
+
+	Finally, since the set of Triphosian numbers is a set of equivalence
+	classes, it remains for us to discuss which member of each equivalence
+	class is most useful for manipulation. Both \cite{egging} and
+	\cite{grossnickle} define a ``standard'' or ``reduced'' form of a
+	Triphosian number to have all nonnegative coordinates, with one coordinate
+	being zero. (Indeed, \cite{grossnickle} defines Triphosian numbers as only
+	having nonnegative coordinates, but this restriction was not imposed by
+	\cite{egging}, where it is noted that this restriction is plausible but not
+	necessary.) The transformation used by both previous works is
+	\[t - \min\{r, g, b\} = [(r - \min\{r, g, b\}, g - \min\{r, g,
+	b\}, b - \min\{r, g, b\})].\]
+	While this definition of standard form is quite useful as it allows for
+	easy determination of where a point should lie on the plane, it will be
+	less useful for some of the proofs we discuss in the next section. So, we
+	will refer to the previous definition as ``standard form,'' and we define
+	the ``reduced form'' of a Triphosian number as follows.
+	\begin{definition}[Reduced form]
+		A Triphosian number $t$ is in reduced form if $b = 0$. Any Triphosian
+		number can be converted to reduced form, which we denote $\bar{t}$ by
+		the transformation
+		\[\bar{t} = [(r - b, g - b, 0)].\]
+	\end{definition}
 
 
-	\section{Isomorphism to \(\mathbb{R}^2\)}
+	\section{Isomorphism to \(\mathbb{C}\)}
 
-	* brief remark on field structure of triphos
-	* show triphos has characteristic 0 and explain what this means
-	* show isomorphism between triphos and R2. explain that this verifies our
-	intuition--triphos is just another way to write down coordinates in the
-	plane.
+	Since Triphosian numbers are plotted on the two-dimensional plane, our
+	intuition tells us that Triphosian numbers should, in some way, be
+	equivalent to the Cartesian two-dimensional plane. However, the
+	transformation
+	which converts between a Triphosian number \(t = (r, g, b)\) and its
+	Cartesian equivalent \(z = (x, y)\) given by \cite{egging},
+	\[ (x, y) = (r, g, b) \begin{pmatrix} 1 & 0 \\ -\frac{1}{2} &
+	\frac{\sqrt{3}}{2} \\ -\frac{1}{2} & -\frac{\sqrt{3}}{2} \end{pmatrix}, \]
+	is not injective---multiple Triphosian numbers will be mapped to the
+	same pair of Cartesian coordinates.
+
+	However, by examining the equivalence classes of triples and making use of
+	the standard form transformation we defined previously, we can construct a
+	bijection between the Triphosian real numbers and $\mathbb{C}$. We note
+	that we construct a bijection between $\Tri$ and $\mathbb{C}$ rather than
+	$\Tri$ and $\mathbb{R}^2$ for an important reason: multiplication in
+	Triphos obeys the same rules as multiplication of complex numbers (see the
+	discussion in both \cite{egging} and \cite{grossnickle}). This suggests an
+	isomorphism to $\mathbb{C}$.
+
+	\begin{theorem}
+		$\Tri$ is isomorphic to $\mathbb{C}$.
+	\end{theorem}
+
+	\begin{proof}
+		Define the mapping \(\lambda: \Tri \to \mathbb{C}]\) such that
+		\[\lambda([(r, g, b)]) = (r - b) + (g - b)i.\]
+
+		First we will show that \(\lambda\) is a bijection.
+		\begin{enumerate}
+			\item The mapping \(\lambda\) is injective: to prove this, let
+			$t_1, t_2 \in \Tri$ such that \(\lambda(t_1) = \lambda(t_2)\) but
+			\(t_1 \neq t_2\).
+		\end{enumerate}
+	\end{proof}
 
 	\section{Isometric geometry of Triphos}
 
